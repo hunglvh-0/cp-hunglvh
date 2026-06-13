@@ -1,15 +1,9 @@
 /**
  * Author:  hunglvh
- * Created: 2026-06-13 10:45:01
+ * Created: 2026-06-13 11:44:25
  * ❤️C
 **/
 #include<bits/stdc++.h>
-/**
- * Tôi như là con kiến
- * Trong thủ đô vội vàng
- * 1000 năm văn hiến
- * 1000 năm yêu nàng❤️
- */
 
 
 using namespace std;
@@ -57,18 +51,15 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 #define debug(x)
 #endif
 inline void solve() {
-    int n,h;cin>>n>>h;
-    int tw=0;
-    for(int i=0;i<n;i++){
-        int a;cin>>a;
-        if(a>h){
-            tw+=2;
-        }
-        else{
-            tw+=1;
-        }
+    int n;cin>>n;
+    vi givers(n+1);
+    for(int i=1;i<=n;i++){
+        int rcv;cin>>rcv;
+        givers[rcv]=i;
     }
-    cout<<tw<<el;
+    for(int i=1;i<=n;i++){
+        cout<<givers[i]<<(i==n?"":" ");
+    }
 }
 int32_t main() {
     fast;
