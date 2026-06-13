@@ -1,10 +1,10 @@
 /**
  * Author:  hunglvh
- * Created: 2026-06-13 14:55:41
+ * Created: 2026-06-13 18:43:44
  * ❤️C
 **/
 #include<bits/stdc++.h>
-
+//hunglvh - The king is back
 
 using namespace std;
 #define ll long long
@@ -51,7 +51,21 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 #define debug(x)
 #endif
 inline void solve() {
-    
+    int t;cin>>t;
+	while(t--){
+		ll n;cin>>n;
+		ll L=1,R=n,ans=0;
+		while(L<=R){
+			ll m=L+(R-L)/2;
+			if(n-m>m){
+				ans=m;
+				L=m+1;
+			}else{
+				R=m-1;
+			}
+		}
+		cout<<ans<<el;
+	}
 }
 int32_t main() {
     fast;
