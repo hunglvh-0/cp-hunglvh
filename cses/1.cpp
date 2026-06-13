@@ -1,6 +1,6 @@
 /**
  * Author:  hunglvh
- * Created: 2026-06-13 10:26:27
+ * Created: 2026-06-13 10:21:56
  * ❤️C
 **/
 #include<bits/stdc++.h>
@@ -57,15 +57,17 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 #define debug(x)
 #endif
 void solve() {
-    int n;cin>>n;
-    bool ih=false;
-    for(int i=0;i<n;i++){
-        int a;cin>>a;
-        if(a==1)ih=true;
+    ll n;cin>>n;
+    while(true){
+        cout<<n<<" ";
+        if(n==1)break;
+        if(n%2==0){
+            n/=2;
+        }else{
+            n=3*n+1;
+        }
     }
-    if(ih)cout<<"HARD";
-    else cout<<"EASY";
-
+    cout<<el;
 }
 int32_t main() {
     fast;
