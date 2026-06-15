@@ -55,22 +55,12 @@ inline void solve() {
 	while(t--){
 		int n;cin>>n;
 		vi a(n);
-		map<int,int> mp;
-		for(int i=0;i<n;i++){
-			cin>>a[i];
-			mp[a[i]]++;
-		}sort(all(a));
-		int c=0;
-		for(auto x:mp){
-			if(x.s%2!=0){
-				c++;
-			}
-		}
-		if(c<=2){
-			yes;cout<<el;
-		}else{
-			no;cout<<el;
-		}
+		for(int i=0;i<n;i++)cin>>a[i];
+		sort(all(a));
+		bool ans=true;
+		for(int i=1;i<n-1;i+=2)if(a[i]!=a[i+1])ans=false;
+		if(ans)yes;else no;
+		cout<<el;
 	}
 }
 int32_t main() {
