@@ -51,7 +51,21 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 #define debug(x)
 #endif
 inline void solve() {
-    
+    int t;cin>>t;
+	while(t--){
+		ll n;cin>>n;
+		ll l=0,r=n,ans=0;
+		while(l<=r){
+			ll mid=(l+r)/2;
+			if(mid*2<=n-1){
+				ans=mid;
+				l=mid+1;
+			}else{
+				r=mid-1;
+			}
+		}
+		cout<<ans<<el;
+	}
 }
 int32_t main() {
     fast;
