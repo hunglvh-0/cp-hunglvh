@@ -51,7 +51,22 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 #define debug(x)
 #endif
 inline void solve() {
-    
+    int n;cin>>n;
+    vector<pair<ll,ll>> a(n);
+    for(int i=0;i<n;i++){
+        cin>>a[i].s>>a[i].f;
+    }
+    sort(all(a));
+    vector<ll> suf(n+1,0);
+    for(int i=n-1;i>=0;i--)suf[i]=max(suf[i+1],a[i].s);
+    int q;cin>>q;
+    while(q--){
+        ll t;cin>>t;
+        pair<ll,ll> dm={t,INF};
+        int id=upper_bound(all(a),dm)-a.begin();
+        ll ans=suf[id];
+        cout<<ans<<el;
+    }
 }
 int32_t main() {
     fast;
