@@ -1,6 +1,6 @@
 /**
  * Author:  hunglvh
- * Created: 2026-06-20 19:10:41
+ * Created: 2026-06-20 21:57:59
  * ❤️C
 **/
 #include<bits/stdc++.h>
@@ -51,43 +51,13 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 #define debug(x)
 #endif
 inline void solve() {
-    int	n,m;ll y;cin>>n>>m>>y;
-	vector<vector<pair<int,ll>>> adj(n+1);
-	for(int	i=0;i<m;i++){
-		int	u,v;ll	t;cin>>u>>v>>t;
-		adj[u].pb({v,t});
-		adj[v].pb({u,t});
-	}
-	for(int	i=1;i<=n;i++){
-		ll x;cin>>x;
-		adj[i].pb({0,x});
-		adj[0].pb({i,x+y});
-	}
-	vector<ll> d(n+1,INF);
-	priority_queue<pair<ll,int>,vector<pair<ll,int>>,greater<pair<ll,int>>>	pq;
-	d[1]=0;
-	pq.push({0,1});
-	while(!pq.empty()){
-		ll dist=pq.top().f;
-		int	u=pq.top().s;
-		pq.pop();
-		if(dist>d[u])continue;
-		for(int	i=0;i<sz(adj[u]);i++){
-			int	v=adj[u][i].f;
-			ll	w=adj[u][i].s;
-			if(d[u]+w<d[v]){
-				d[v]=d[u]+w;
-				pq.push({d[v],v});
-			}
-		}
-	}
-	vector<ll> ans;
-	for(int	i=2;i<=n;i++)ans.pb(d[i]);
-	for(int	i=0;i<sz(ans);i++){
-		cout<<ans[i];
-		if(i<sz(ans)-1)cout<<char(32);
-	}
-	cout<<el;
+    int a,b;cin>>a>>b;
+    int ans=0;
+    while(a<=b){
+        a*=3;
+        b*=2;
+        ans++;
+    }cout<<ans<<el;
 }
 int32_t main() {
     fast;
