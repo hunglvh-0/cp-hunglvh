@@ -5,7 +5,7 @@ from datetime import datetime
 
 REPO_PATH = "."
 COMMIT_MSG = "Auto sync CP code"
-SYNC_INTERVAL = 600
+SYNC_INTERVAL = 300
 
 C_GREEN = '\033[92m'
 C_BLUE = '\033[94m'
