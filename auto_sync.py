@@ -4,7 +4,7 @@ import subprocess
 from datetime import datetime
 
 REPO_PATH = "."
-COMMIT_MSG = "Auto sync CP code"
+COMMIT_MSG = "Updated"
 SYNC_INTERVAL = 300
 
 C_GREEN = '\033[92m'
