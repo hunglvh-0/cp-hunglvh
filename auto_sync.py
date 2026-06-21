@@ -22,8 +22,9 @@ def auto_commit():
     if status.stdout.strip():
         changed_files = []
         for line in status.stdout.strip().split('\n'):
-            if len(line) > 3:
-                changed_files.append(line[3:])
+            if line:
+                file_name = line.strip().split(maxsplit=1)[1].replace('"', '')
+                changed_files.append(file_name)
 
         print(f"\n{C_YELLOW}{C_BOLD}[{current_time}] 🚀 Đang push...{C_RESET}")
         subprocess.run(["git", "add", "."], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -36,7 +37,7 @@ def auto_commit():
             print(f" {C_GREEN}■{C_RESET} [{current_time}] {C_BOLD}{file}{C_RESET}")
         print()
     else:
-        print(f"{C_BLUE}■{C_RESET} ", end="", flush=True)
+        print(f"\r{C_BLUE}👀 Đang soi...{C_RESET} ", end="", flush=True)
 
 if __name__ == "__main__":
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -47,7 +48,6 @@ if __name__ == "__main__":
     print(f"{C_RESET}")
     print(f"{C_BLUE}Thư mục: {C_BOLD}{os.path.abspath(REPO_PATH)}{C_RESET}")
     print(f"{C_BLUE}Chu kỳ: {C_BOLD}{SYNC_INTERVAL}s{C_RESET}\n")
-    print(f"{C_GREEN}👀 Đang soi...{C_RESET}\n")
 
     while True:
         auto_commit()
