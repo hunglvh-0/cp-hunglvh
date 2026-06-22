@@ -51,7 +51,18 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 #define debug(x)
 #endif
 inline void solve() {
-    
+    int n,t;cin>>n>>t;
+    string s;cin>>s;
+    while(t--){
+        for(int i=0;i<n;i++){
+            if(s[i]=='B' and s[i+1]=='G'){
+                swap(s[i],s[i+1]);
+                i++;
+            }
+        }
+    }
+    string ans=s;
+    cout<<ans<<el;
 }
 int32_t main() {
     fast;
