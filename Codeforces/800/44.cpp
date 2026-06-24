@@ -51,7 +51,15 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 #define debug(x)
 #endif
 inline void solve() {
-    
+    int n;cin>>n;
+	string s;cin>>s;
+	set<char>st;
+	for(int i=0;i<n;i++){
+		st.insert(tolower(s[i]));
+	}
+	int ans=st.size();
+	if(ans==26)cout<<"YES"<<el;
+	else{cout<<"NO"<<el;}
 }
 int32_t main() {
     fast;
