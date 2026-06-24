@@ -59,7 +59,9 @@ inline void solve() {
 	}
 	int ans=st.size();
 	if(ans==26)cout<<"YES"<<el;
-	else{cout<<"NO"<<el;}
+	else{
+        cout<<"NO"<<el;
+    }
 }
 int32_t main() {
     fast;
