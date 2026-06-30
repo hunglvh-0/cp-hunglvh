@@ -1,6 +1,6 @@
 /**
  * Author:  hunglvh
- * Created: 2026-06-28 22:08:42
+ * Created: 2026-06-30 21:53:21
  * ❤️C
 **/
 #include<bits/stdc++.h>
@@ -53,28 +53,36 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 inline void solve() {
     int t;cin>>t;
     while(t--){
-        int n;cin>>n;
-        map<int,int>mp;
-        int tmp=n;
-        for(int i=2;i*i<=tmp;i++){
-            if(tmp%i==0){
-                while(tmp%i==0){
-                    mp[i]++;
-                    tmp/=i;
+        int n;
+        cin>>n;
+        vl a(n+2,0),b(n+2,0),A(n+2,0);
+        for(int i=1;i<=n;i++)cin>>a[i];
+        for(int i=1;i<=n;i++)cin>>b[i];
+        for(int i=1;i<=n;i++){
+            ll x=b[i]-a[i];
+            if(i%2==1)A[i]=-x;
+            else A[i]=x;
+        }
+        bool ans=true;
+        ll E=0;
+        for(int i=1;i<=n+1;i++){
+            if(i%2==1){
+                if(A[i]>A[i-1]){
+                    ans=false;
+                    break;
                 }
+                E=max({0LL,A[i],E+A[i]-A[i-1]});
+            }else{
+                if(A[i]<A[i-1] or E+A[i]-A[i-1]<0){
+                    ans=false;
+                    break;
+                }
+                E=max({0LL,A[i],E});
             }
         }
-        if(tmp>1 and tmp!=0){
-            mp[tmp]++;
-        }
-        int omega=0;
-        int dist=0;
-        for(auto x:mp){
-            dist++;
-            omega+=x.s;
-        }
-        int ans=omega+dist-1;
-        cout<<ans<<el;
+        if(E!=0)ans=false;
+        if(ans)cout<<"YES"<<el;
+        else cout<<"NO"<<el;
     }
 }
 int32_t main() {

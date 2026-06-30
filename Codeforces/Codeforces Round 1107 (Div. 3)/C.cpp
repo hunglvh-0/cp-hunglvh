@@ -1,6 +1,6 @@
 /**
  * Author:  hunglvh
- * Created: 2026-06-28 22:08:42
+ * Created: 2026-06-30 21:44:48
  * ❤️C
 **/
 #include<bits/stdc++.h>
@@ -54,26 +54,12 @@ inline void solve() {
     int t;cin>>t;
     while(t--){
         int n;cin>>n;
-        map<int,int>mp;
-        int tmp=n;
-        for(int i=2;i*i<=tmp;i++){
-            if(tmp%i==0){
-                while(tmp%i==0){
-                    mp[i]++;
-                    tmp/=i;
-                }
-            }
+        string s;cin>>s;
+        s.erase(unique(all(s)),s.end());
+        int ans=1;
+        if(sz(s)==2){
+            ans=2;
         }
-        if(tmp>1 and tmp!=0){
-            mp[tmp]++;
-        }
-        int omega=0;
-        int dist=0;
-        for(auto x:mp){
-            dist++;
-            omega+=x.s;
-        }
-        int ans=omega+dist-1;
         cout<<ans<<el;
     }
 }

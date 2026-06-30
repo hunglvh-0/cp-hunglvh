@@ -1,6 +1,6 @@
 /**
  * Author:  hunglvh
- * Created: 2026-06-28 22:08:42
+ * Created: 2026-06-30 22:16:00
  * ❤️C
 **/
 #include<bits/stdc++.h>
@@ -51,31 +51,16 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 #define debug(x)
 #endif
 inline void solve() {
-    int t;cin>>t;
-    while(t--){
-        int n;cin>>n;
-        map<int,int>mp;
-        int tmp=n;
-        for(int i=2;i*i<=tmp;i++){
-            if(tmp%i==0){
-                while(tmp%i==0){
-                    mp[i]++;
-                    tmp/=i;
-                }
-            }
+    int n;cin>>n;
+    vi h(n),a(n);
+    for(int i=0;i<n;i++)cin>>h[i]>>a[i];
+    int ans=0;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            if(i!=j and h[i]==a[j])ans++;
         }
-        if(tmp>1 and tmp!=0){
-            mp[tmp]++;
-        }
-        int omega=0;
-        int dist=0;
-        for(auto x:mp){
-            dist++;
-            omega+=x.s;
-        }
-        int ans=omega+dist-1;
-        cout<<ans<<el;
     }
+    cout<<ans<<el;
 }
 int32_t main() {
     fast;
