@@ -51,7 +51,25 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 #define debug(x)
 #endif
 inline void solve() {
-    
+    int n;cin>>n;
+    int a[1005];
+    for(int i=0;i<n;i++)cin>>a[i];
+    int l=0,r=n-1,ans=0,d=0,t=0;
+    while(l<=r){
+        int mx;
+        if(a[l]>a[r]){
+            mx=a[l];
+            l++;
+        }else{
+            mx=a[r];
+            r++;
+        }
+        if(t==0){
+            ans+=mx;
+        }
+        t=1-t;
+    }
+    cout<<ans<<char(32)<<d<<el;
 }
 int32_t main() {
     fast;
