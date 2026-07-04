@@ -7,6 +7,8 @@
 //hunglvh - The king is back
 
 using namespace std;
+#pragma GCC optimize("O3,unroll-loops")
+#pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
 #define ll long long
 #define ld long double
 #define all(x) x.begin(), x.end()
@@ -63,14 +65,17 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 //     }
 //     return res;
 // }
-vi P(60005,1);
-int dp[2][15005][2];
+vi P(600005,1);
+int mod=998244353;
+const int MAXD=900005;
+int dp0[MAXD],dp1[MAXD];
+int sv[MAXD];
 void bp(){
     P[0]=0;
     P[1]=0;
-    for(int i=2;i*i<=60000;i++){
+    for(int i=2;i*i<=600000;i++){
         if(P[i]){
-            for(int j=i*i;j<=60000;j+=i){
+            for(int j=i*i;j<=600000;j+=i){
                 P[j]=0;
             }
         }
@@ -78,61 +83,86 @@ void bp(){
 }
 inline void solve() {
     int n;cin>>n;
-    ll ans=0;
     if(n==1){
-        ans=1;
-        cout<<ans<<el;
+        cout<<1<<el;
+        return;
+    }
+    if(n<=3){
+        cout<<0<<el;
         return;
     }
     bp();
     int o=(n+1)/2;
     int e=n/2;
-    int mod=998244353;
-    for(int i=0;i<=o;i++){
-        int c=i%2;
-        int p=1-c;
-        for(int j=0;j<=e;j++){
-            if(i==0 and j==0){
-                continue;
-            }
-            int v0=0;
-            int v1=0;
-            if(i>=1){
-                if(i==1 and j==0){
-                    v0=1;
-                }else{
-                    if(i>=2){
-                        v0=dp[p][j][0];
-                    }
-                    if(j>=1 and P[abs(2*i-2*j-1)]){
-                        v0+=dp[p][j][1];
-                        if(v0>=mod){
-                            v0-=mod;
-                        }
-                    }
-                }
-            }
-            if(j>=1){
-                if(i==0 and j==1){
-                    v1=1;
-                }else{
-                    if(j>=2){
-                        v1=dp[c][j-1][1];
-                    }
-                    if(i>=1 and P[abs(2*i-2*j-1)]){
-                        v1+=dp[c][j-1][0];
-                        if(v1>=mod){
-                            v1-=mod;
-                        }
-                    }
-                }
-            }
-            dp[c][j][0]=v0;
-            dp[c][j][1]=v1;
+    int OFF=n+5;
+    vi allowed;
+    for(int d=-e-2;d<=o+2;d++){
+        int v=abs(2*d-1);
+        if(v>=2 and v<=600000 and P[v]){
+            allowed.pb(d);
         }
     }
-    ans=(dp[o%2][e][0]+dp[o%2][e][1])%mod;
-    ans=(ans*2)%mod;
+    dp0[1+OFF]=1;
+    dp1[-1+OFF]=1;
+    int s0=0,s1=0;
+    vl Code(n+5,0);
+    Code[1]=1;
+    int plo=lower_bound(all(allowed),0)-allowed.begin();
+    int phi=plo;
+    for(int t=1;t<n;t++){
+        s0--;
+        s1++;
+        int dlo=max(-e,-t-1);
+        int dhi=min(o,t+1);
+        while(plo>0 and allowed[plo-1]>=dlo){
+            plo--;
+        }
+        while(phi<sz(allowed) and allowed[phi]<=dhi){
+            phi++;
+        }
+        int O0=OFF+s0;
+        int O1=OFF+s1;
+        for(int k=plo;k<phi;k++){
+            int d=allowed[k];
+            sv[d+OFF]=dp0[d+2+O0];
+        }
+        for(int k=plo;k<phi;k++){
+            int d=allowed[k];
+            int i0=d+O0;
+            int i1=d-2+O1;
+            int v0=dp0[i0]+dp1[i1];
+            if(v0>=mod){
+                v0-=mod;
+            }
+            dp0[i0]=v0;
+        }
+        for(int k=plo;k<phi;k++){
+            int d=allowed[k];
+            int i1=d+O1;
+            int v1=dp1[i1]+sv[d+OFF];
+            if(v1>=mod){
+                v1-=mod;
+            }
+            dp1[i1]=v1;
+        }
+        int k_len=t+1;
+        int ok=(k_len+1)/2;
+        int ek=k_len/2;
+        int df=ok-ek;
+        int cur=dp0[df+O0]+dp1[df+O1];
+        if(cur>=mod){
+            cur-=mod;
+        }
+        Code[k_len]=((ll)cur*2)%mod;
+    }
+    vl J(n+5,0);
+    J[1]=1;
+    J[2]=0;
+    J[3]=0;
+    for(int k=4;k<=n;k++){
+        J[k]=(Code[k]-J[k-1]+mod)%mod;
+    }
+    ll ans=J[n];
     cout<<ans<<el;
 }
 int32_t main() {
