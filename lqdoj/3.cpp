@@ -50,8 +50,90 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 #else
 #define debug(x)
 #endif
+// vl bit(10,0);
+// void upd(ll i,ll v){
+//     for(;i<10;i+=i&-i){
+//         bit[i]+=v;
+//     }
+// }
+// ll query(ll i){
+//     ll res=0;
+//     for(;i>0;i-=i&-i){
+//         res+=bit[i];
+//     }
+//     return res;
+// }
+vi P(60005,1);
+int dp[2][15005][2];
+void bp(){
+    P[0]=0;
+    P[1]=0;
+    for(int i=2;i*i<=60000;i++){
+        if(P[i]){
+            for(int j=i*i;j<=60000;j+=i){
+                P[j]=0;
+            }
+        }
+    }
+}
 inline void solve() {
-    
+    int n;cin>>n;
+    ll ans=0;
+    if(n==1){
+        ans=1;
+        cout<<ans<<el;
+        return;
+    }
+    bp();
+    int o=(n+1)/2;
+    int e=n/2;
+    int mod=998244353;
+    for(int i=0;i<=o;i++){
+        int c=i%2;
+        int p=1-c;
+        for(int j=0;j<=e;j++){
+            if(i==0 and j==0){
+                continue;
+            }
+            int v0=0;
+            int v1=0;
+            if(i>=1){
+                if(i==1 and j==0){
+                    v0=1;
+                }else{
+                    if(i>=2){
+                        v0=dp[p][j][0];
+                    }
+                    if(j>=1 and P[abs(2*i-2*j-1)]){
+                        v0+=dp[p][j][1];
+                        if(v0>=mod){
+                            v0-=mod;
+                        }
+                    }
+                }
+            }
+            if(j>=1){
+                if(i==0 and j==1){
+                    v1=1;
+                }else{
+                    if(j>=2){
+                        v1=dp[c][j-1][1];
+                    }
+                    if(i>=1 and P[abs(2*i-2*j-1)]){
+                        v1+=dp[c][j-1][0];
+                        if(v1>=mod){
+                            v1-=mod;
+                        }
+                    }
+                }
+            }
+            dp[c][j][0]=v0;
+            dp[c][j][1]=v1;
+        }
+    }
+    ans=(dp[o%2][e][0]+dp[o%2][e][1])%mod;
+    ans=(ans*2)%mod;
+    cout<<ans<<el;
 }
 int32_t main() {
     fast;
