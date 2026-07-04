@@ -62,10 +62,12 @@ inline void solve() {
             l++;
         }else{
             mx=a[r];
-            r++;
+            r--;
         }
         if(t==0){
             ans+=mx;
+        }else{
+            d+=mx;
         }
         t=1-t;
     }
