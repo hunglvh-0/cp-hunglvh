@@ -1,6 +1,6 @@
 /**
  * Author:  hunglvh
- * Created: 2026-07-04 11:46:45
+ * Created: 2026-07-09 21:05:20
  * ❤️C
 **/
 #include<bits/stdc++.h>
@@ -50,9 +50,8 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 #else
 #define debug(x)
 #endif
-
 inline void solve() {
-
+    
 }
 int32_t main() {
     fast;
