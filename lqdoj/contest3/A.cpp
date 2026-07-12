@@ -1,8 +1,4 @@
-/**
- * Author:  hunglvh
- * Created: 2026-07-11 06:37:14
- * ❤️C
-**/
+
 #include<bits/stdc++.h>
 //hunglvh - The king is back
 
@@ -51,45 +47,11 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 #define debug(x)
 #endif
 inline void solve() {
-    ll a,b,c,d,n,s;cin>>a>>b>>c>>d>>n>>s;
-    vector<bool> p(s+1,true);
-    vl pr;
-    p[0]=p[1]=false;
-    for(ll i=2;i<=s;i++){
-        if(p[i]){
-            pr.pb(i);
-            for(ll j=i*i;j<=s;j+=i){
-                p[j]=false;
-            }
-        }
-    }
-    ll ans=0;
-    for(int i=0;i<sz(pr);i++){
-        ll e=pr[i];
-        ll idx=lower_bound(all(pr),e+n)-pr.begin();
-        if(idx<sz(pr) and pr[idx]==e+n){
-            ll f=pr[idx];
-            if(e+f<=s){
-                if(b*e<f*a and f*c<d*e){
-                    ans++;
-                }
-            }
-        }
-        idx=lower_bound(all(pr),e-n)-pr.begin();
-        if(idx>=0 and idx<sz(pr) and pr[idx]==e-n){
-            ll f=pr[idx];
-            if(e+f<=s){
-                if(b*e<f*a and f*c<d*e){
-                    ans++;
-                }
-            }
-        }
-    }
-    cout<<ans<<el;
+
 }
 int32_t main() {
     fast;
-    #define file "caudogionghi"
+    #define file "main"
     if(fopen(file".INP","r")) {
         freopen(file".INP","r",stdin);
         freopen(file".OUT","w",stdout);
