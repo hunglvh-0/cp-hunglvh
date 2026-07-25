@@ -51,7 +51,47 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 #define debug(x)
 #endif
 inline void solve() {
-    
+    int t;cin>>t;
+    while(t--){
+        int n;cin>>n;
+        vi a(n);
+        arr(a,n);
+        vi b(n);
+        arr(b,n);
+        int diff=0;
+        int o=0;
+        bool h1=false;
+        bool h0=false;
+        for(int i=0;i<n;i++){
+            if(a[i]!=b[i]){
+                diff++;
+                if(a[i]==1){
+                    o++;
+                }
+            }else{
+                if(a[i]==1){
+                    h1=true;
+                }else{
+                    h0=true;
+                }
+            }
+        }
+        int ans;
+        if(diff==0){
+            ans=0;
+        }else if(o%2==1){
+            ans=1;
+        }else if(o>0){
+            ans=2;
+        }else{
+            if(h1 and h0){
+                ans=2;
+            }else{
+                ans=-1;
+            }
+        }
+        cout<<ans<<el;
+    }
 }
 int32_t main() {
     fast;
