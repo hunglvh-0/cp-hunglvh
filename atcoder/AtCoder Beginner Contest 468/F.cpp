@@ -50,8 +50,50 @@ ll pow_mod(ll a, ll b, ll m = MOD) {
 #else
 #define debug(x)
 #endif
-inline void solve() {
-    
+int n,ans,off,m;
+vi p,bit;
+
+void upd(int x,int v){
+    for(;x<=n+1;x+=x&-x){
+        bit[x]=max(bit[x],v);
+    }
+}
+
+int qry(int x){
+    int r=-1e9;
+    for(;x>0;x-=x&-x){
+        r=max(r,bit[x]);
+    }
+    return r;
+}
+
+void cal(){
+    bit.assign(n+2,-1e9);
+    upd(1,0);
+    off=0;
+    m=0;
+    for(int i=0;i<n;i++){
+        if(p[i]>m){
+            int mx=qry(n+1);
+            off++;
+            upd(m+1,mx);
+            m=p[i];
+        }else{
+            int mx=qry(p[i]);
+            if(mx>-1e8){
+                upd(p[i]+1,mx+1);
+            }
+        }
+    }
+    ans=qry(n+1)+off;
+}
+
+inline void solve(){
+    cin>>n;
+    p.assign(n,0);
+    arr(p,n);
+    cal();
+    cout<<ans<<el;
 }
 int32_t main() {
     fast;
