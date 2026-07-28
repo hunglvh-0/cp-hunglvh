@@ -1,6 +1,6 @@
 /**
  * Author:  hunglvh
- * Created: 2026-07-26 11:43:51
+ * Created: 2026-07-26 21:34:53
  * ❤️C
 **/
 #include <bits/stdc++.h>
@@ -28,6 +28,7 @@ using vvl = vector<vl>;
 #define yes cout << "YES\n"
 #define no cout << "NO\n"
 #define TIME() cerr << endl << "Time:" << 1000.0 * clock() / CLOCKS_PER_SEC << " ms." << endl
+#define i128 __int128
 const ll INF = 1e18;
 const ll MOD = 1e9 + 7;
 const int dx[4] = {1, -1, 0, 0}, dy[4] = {0, 0, 1, -1};
@@ -39,7 +40,49 @@ ll pow_mod(ll a, ll b, ll m = MOD){ll res = 1; a %= m;while (b > 0){if (b & 1) r
 
 inline void solve()
 {
-    
+    int t;cin>>t;
+    while(t--)
+    {
+        int n;cin>>n;
+        vi l(n),r(n),u(n),v(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>l[i]>>r[i]>>u[i]>>v[i];
+        }
+        int ans=0;
+        for(int m=n;m>=1;m--)
+        {
+            int cur=0;
+            bool ok=true;
+            for(int j=1;j<=m;j++)
+            {
+                bool fnd=false;
+                while(cur<n)
+                {
+                    int i=cur;
+                    cur++;
+                    bool ok1=!(l[i]<=j and j<=r[i]);
+                    bool ok2=!(u[i]<=(m-j+1) and (m-j+1)<=v[i]);
+                    if(ok1 and ok2)
+                    {
+                        fnd=true;
+                        break;
+                    }
+                }
+                if(!fnd)
+                {
+                    ok=false;
+                    break;
+                }
+            }
+            if(ok)
+            {
+                ans=m;
+                break;
+            }
+        }
+        cout<<ans<<el;
+    }
 }
 int32_t main()
 {
