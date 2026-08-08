@@ -1,6 +1,6 @@
 /**
  * Author:  hunglvh
- * Created: 2026-07-28 13:10:27
+ * Created: 2026-08-08 10:41:02
  * ❤️C
 **/
 #include <bits/stdc++.h>
@@ -38,9 +38,82 @@ ll gcd(ll a, ll b){return std::gcd(a, b);}
 ll lcm(ll a, ll b){return a / gcd(a, b) * b;}
 ll pow_mod(ll a, ll b, ll m = MOD){ll res = 1; a %= m;while (b > 0){if (b & 1) res = (res * a) % m;a = (a * a) % m;b >>= 1;}return res;}
 
+const int max_d=10;
 inline void solve()
 {
-    
+    int t;cin>>t;
+    while(t--)
+    {
+        string s;cin>>s;
+        int n=sz(s);
+        if(n==1)
+        {
+            cout<<s<<el;
+            continue;
+        }
+        int sm=0;vi cnt(max_d,0);
+        for(char c:s)
+        {
+            sm+=c-'0';
+            cnt[c-'0']++;
+        }
+        int mn=max(1,sm-150);
+        for(int y=sm;y>=mn;y--)
+        {
+            int cur=y;vi req(max_d,0);
+            string suf="";
+            while(true)
+            {
+                string stp=to_string(cur);
+                suf+=stp;
+                if(cur<=9)
+                {
+                    break;
+                }
+                int nxt=0;
+                for(char c:stp)
+                {
+                    nxt+=c-'0';
+                }
+                cur=nxt;
+            }
+            bool ok=true;
+            for(char c:suf)
+            {
+                req[c-'0']++;
+            }
+            for(int i=0;i<max_d;i++)
+            {
+                if(req[i]>cnt[i])
+                {
+                    ok=false;
+                    break;
+                }
+            }
+            if(ok)
+            {
+                int rem=0;
+                for(int i=0;i<max_d;i++)
+                {
+                    rem+=(cnt[i]-req[i])*i;
+                }
+                if(rem==y)
+                {
+                    string ans="";
+                    for(int i=9;i>=0;i--)
+                    {
+                        int amt=cnt[i]-req[i];
+                        while(amt--)
+                        {
+                            ans+=char('0'+i);
+                        }
+                    }
+                    cout<<ans<<suf<<el;
+                    break;
+                }
+            }
+        }
+    }
 }
 int32_t main()
 {
