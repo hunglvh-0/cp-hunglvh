@@ -1,26 +1,58 @@
-#include<bits/stdc++.h>
+﻿/**
+ * Author: hunglvh
+ * Created: 2026-08-29 18:00:03
+ * â¤ï¸C
+**/
+#include <bits/stdc++.h>
+#include <bits/extc++.h>
+#include <atcoder/all>
 using namespace std;
+using namespace __gnu_pbds;
+using namespace atcoder;
 #define ll long long
-#define el "\n"
-#define task ""
-void sol(){
-    int n;cin >>n;
-    int ans=0;
-    ans= ans+(n/20);
-    n=n-(n/20)*20;
-    ans=ans+(n/10);
-    n=n-(n/10)*10;
-    ans=ans+(n/5);
-    n=n-(n/5)*5;
-    ans=ans+n;
-    cout<<ans;
-}
+#define ld long double
+using u64 = uint64_t;
+using vi = vector<int>;
+using vl = vector<ll>;
+using vs = vector<string>;
+using vc = vector<char>;
+using pii = pair<int, int>;
+using pll = pair<ll, ll>;
+using vvi = vector<vi>;
+using vvl = vector<vl>;
+#define all(x) x.begin(), x.end()
+#define rall(x) (x).rbegin(), (x).rend()
+#define sz(x) (int)(x).size()
+#define pb push_back
+#define el '\n'
+#define f first
+#define s second
+#define arr(a,n) for(int i=0;i<n;i++)cin>>a[i];
+#define fast ios_base::sync_with_stdio(false);cin.tie(NULL);
+#define yes cout<<"YES\n"
+#define no cout<<"NO\n"
+#define TIME() cerr<<endl<<"Time:"<<1000.0*clock()/CLOCKS_PER_SEC<<" ms."<<endl
+#define i128 __int128
+const ll INF = 1e18;
+const ll MOD = 998244353; // AtCoder default
+const int dx[4] = {1, -1, 0, 0}, dy[4] = {0, 0, 1, -1};
+template<class T> bool chmin(T& a, const T& b){return b<a?a=b,1:0;}
+template<class T> bool chmax(T& a, const T& b){return a<b?a=b,1:0;}
+ll gcd(ll a, ll b){return std::gcd(a,b);}
+ll lcm(ll a, ll b){return a/gcd(a,b)*b;}
+ll pow_mod(ll a, ll b, ll m=MOD){ll res=1;a%=m;while(b>0){if(b&1)res=(res*a)%m;a=(a*a)%m;b>>=1;}return res;}
 
-int main(){
-    ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-    if(fopen(task".INP","r")){
-        freopen(task".INP","r",stdin);
-        freopen(task".OUT","w",stdout);
+
+int32_t main()
+{
+    fast;
+    #define file "main"
+    if(fopen(file".INP","r"))
+    {
+        freopen(file".INP","r",stdin);
+        freopen(file".OUT","w",stdout);
     }
-    sol();
+    solve();
+    TIME();
+    return 0;
 }
