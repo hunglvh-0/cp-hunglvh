@@ -1,0 +1,4 @@
+f(x) = |x - a_i|
+Using O(n^2) DP to simulate suffix values.
+nxt[j] = dp[abs(j - a[i])]
+This is O(n^2) and will TLE on test 9.
