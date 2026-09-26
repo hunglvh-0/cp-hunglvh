@@ -1,36 +1,132 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void solve()
+int bfs_dist(string start)
 {
-    int n;
-    if (!(cin >> n))
-        return;
-    vector<int> p(n);
-    vector<int> pos(n + 1);
+    int n = start.size();
+    auto is_sorted = [&](const string &s)
+    {
+        for (int i = 0; i < n - 1; i++)
+            if (s[i] > s[i + 1])
+                return false;
+        return true;
+    };
+    if (is_sorted(start))
+        return 0;
+
+    queue<string> q;
+    map<string, int> dist;
+    q.push(start);
+    dist[start] = 0;
+
+    while (!q.empty())
+    {
+        string u = q.front();
+        q.pop();
+        int d = dist[u];
+
+        if (is_sorted(u))
+            return d;
+
+        for (int i = 0; i < n; i++)
+        {
+            // prefix u[0..i]
+            int has_0 = 0, has_1 = 0;
+            for (int j = 0; j <= i; j++)
+            {
+                if (u[j] == '0')
+                    has_0 = 1;
+                if (u[j] == '1')
+                    has_1 = 1;
+            }
+            // AND result: 1 if !has_0, else 0
+            char and_res = (!has_0) ? '1' : '0';
+            // OR result: 1 if has_1, else 0
+            char or_res = (has_1) ? '1' : '0';
+
+            // try AND
+            if (u[i] != and_res)
+            {
+                string v = u;
+                v[i] = and_res;
+                if (!dist.count(v))
+                {
+                    dist[v] = d + 1;
+                    if (is_sorted(v))
+                        return d + 1;
+                    q.push(v);
+                }
+            }
+            // try OR
+            if (u[i] != or_res)
+            {
+                string v = u;
+                v[i] = or_res;
+                if (!dist.count(v))
+                {
+                    dist[v] = d + 1;
+                    if (is_sorted(v))
+                        return d + 1;
+                    q.push(v);
+                }
+            }
+        }
+    }
+    return -1;
+}
+
+int solve_fast(string s)
+{
+    int n = s.size();
+    // check if already sorted
+    bool sorted = true;
+    for (int i = 0; i < n - 1; i++)
+        if (s[i] > s[i + 1])
+            sorted = false;
+    if (sorted)
+        return 0;
+
+    if (s[0] == '1')
+    {
+        int cnt0 = 0;
+        for (char c : s)
+            if (c == '0')
+                cnt0++;
+        return cnt0;
+    }
+
+    int first_1 = -1;
     for (int i = 0; i < n; i++)
     {
-        cin >> p[i];
-        pos[p[i]] = i;
+        if (s[i] == '1')
+        {
+            first_1 = i;
+            break;
+        }
     }
-    vector<int> max_p(n);
-    max_p[0] = p[0];
-    for (int i = 1; i < n; i++)
-        max_p[i] = max(max_p[i - 1], p[i]);
-    vector<int> min_s(n);
-    min_s[n - 1] = p[n - 1];
-    for (int i = n - 2; i >= 0; i--)
-        min_s[i] = min(min_s[i + 1], p[i]);
+    if (first_1 == -1)
+        return 0;
 
-    // Let's check prefix max < suffix min split point!
-    // If max_p[i] < min_s[i+1], then all elements in p[0..i] are smaller than
-    // all elements in p[i+1..n-1]. Any edge between u in p[0..i] and v in
-    // p[i+1..n-1] must have u < v because u <= max_p[i] < min_s[i+1] <= v. And
-    // u appears before v in p! So edges between p[0..i] and p[i+1..n-1] are
-    // ALWAYS valid! Thus we can split the problem into components! But within a
-    // component, CAN WE ALWAYS satisfy it if max_p[i] > min_s[i+1]? Wait, let's
-    // test if a component is valid iff it doesn't have an internal
-    // contradiction.
+    // prefix sums of 1s
+    vector<int> pref1(n + 1, 0);
+    for (int i = 0; i < n; i++)
+        pref1[i + 1] = pref1[i] + (s[i] == '1');
+
+    int total1 = pref1[n];
+    // Option 1: all 0s
+    int ans = total1;
+
+    // Option 2: first 1 at p (first_1 <= p < n)
+    // target has 0s in [0, p-1] and 1s in [p, n-1]
+    // cost = (1s in [0, p-1]) + (0s in [p, n-1])
+    // 1s in [0, p-1] = pref1[p]
+    // 0s in [p, n-1] = (n - p) - (pref1[n] - pref1[p])
+    for (int p = first_1; p < n; p++)
+    {
+        int cost = pref1[p] + (n - p) - (pref1[n] - pref1[p]);
+        ans = min(ans, cost);
+    }
+    return ans;
 }
 
 int main()
@@ -39,7 +135,12 @@ int main()
     if (cin >> t)
     {
         while (t--)
-            solve();
+        {
+            int n;
+            string s;
+            cin >> n >> s;
+            cout << bfs_dist(s) << "\n";
+        }
     }
     return 0;
 }
