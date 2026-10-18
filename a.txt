@@ -1,0 +1,2199 @@
+|1141A|
+inline void solve()
+{
+    int n,m;
+    cin>>n>>m;
+    if(m%n!=0)
+    {
+        cout<<-1<<el;
+        return;
+    }
+    int d=m/n;
+    int ans=0;
+    while(d%2==0)
+    {
+        d/=2;
+        ans++;
+    }
+    while(d%3==0)
+    {
+        d/=3;
+        ans++;
+    }
+    if(d!=1)
+    {
+        ans=-1;
+    }
+    cout<<ans<<el;
+}
+
+
+|1182A|
+inline void solve()
+{
+    int n;
+    cin>>n;
+    if(n%2!=0)
+    {
+        cout<<0<<el;
+    }
+    else
+    {
+        ll ans=1LL<<(n/2);
+        cout<<ans<<el;
+    }
+}
+
+
+|122A|
+inline void solve()
+{
+    int n;
+    cin>>n;
+    int lk[14]={4,7,44,47,74,77,444,447,474,477,744,747,774,777};
+    bool ok=false;
+    for(int i=0;i<14;i++)
+    {
+        if(n%lk[i]==0)
+        {
+            ok=true;
+        }
+    }
+    if(ok)
+    {
+        yes;
+    }
+    else
+    {
+        no;
+    }
+}
+
+
+|124A|
+inline void solve()
+{
+    int n,a,b;
+    cin>>n>>a>>b;
+    int low=max(a+1,n-b);
+    int ans=max(0,n-low+1);
+    cout<<ans<<el;
+}
+
+
+|1312B|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        vi a(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+        sort(rall(a));
+        for(int i=0;i<n;i++)
+        {
+            cout<<a[i]<<(i==n-1?el:' ');
+        }
+    }
+}
+
+
+|131A|
+inline void solve()
+{
+    string s;
+    cin>>s;
+    bool ok=true;
+    for(int i=1;i<sz(s);i++)
+    {
+        if(islower(s[i]))
+        {
+            ok=false;
+        }
+    }
+    if(ok)
+    {
+        for(int i=0;i<sz(s);i++)
+        {
+            if(islower(s[i]))
+            {
+                s[i]=toupper(s[i]);
+            }
+            else
+            {
+                s[i]=tolower(s[i]);
+            }
+        }
+    }
+    cout<<s<<el;
+}
+
+
+|1327A|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll n,k;
+        cin>>n>>k;
+        if(n>=k*k and n%2==k%2)
+        {
+            yes;
+        }
+        else
+        {
+            no;
+        }
+    }
+}
+
+
+|1335C|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        map<int,int> mp;
+        int mx=0;
+        for(int i=0;i<n;i++)
+        {
+            int x;
+            cin>>x;
+            mp[x]++;
+            chmax(mx,mp[x]);
+        }
+        int d=sz(mp);
+        int ans=max(min(mx-1,d),min(mx,d-1));
+        cout<<ans<<el;
+    }
+}
+
+
+|1342A|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll x,y,a,b;
+        cin>>x>>y>>a>>b;
+        if(x>y)
+        {
+            swap(x,y);
+        }
+        ll ans;
+        if(2*a<=b)
+        {
+            ans=(x+y)*a;
+        }
+        else
+        {
+            ans=x*b+(y-x)*a;
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1353C|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll n;
+        cin>>n;
+        ll k=n/2;
+        ll ans=(i128)8*k*(k+1)*(2*k+1)/6;
+        cout<<ans<<el;
+    }
+}
+
+
+|1360C|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        vi a(n);
+        int ev=0;
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+            if(a[i]%2==0)
+            {
+                ev++;
+            }
+        }
+        if(ev%2==0)
+        {
+            yes;
+        }
+        else
+        {
+            sort(all(a));
+            bool ok=false;
+            for(int i=0;i<n-1;i++)
+            {
+                if(a[i+1]-a[i]==1)
+                {
+                    ok=true;
+                }
+            }
+            if(ok)
+            {
+                yes;
+            }
+            else
+            {
+                no;
+            }
+        }
+    }
+}
+
+
+|1362A|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll a,b;
+        cin>>a>>b;
+        if(a>b)
+        {
+            swap(a,b);
+        }
+        if(b%a!=0)
+        {
+            cout<<-1<<el;
+        }
+        else
+        {
+            ll d=b/a;
+            int cnt=0;
+            while(d%2==0)
+            {
+                d/=2;
+                cnt++;
+            }
+            if(d!=1)
+            {
+                cout<<-1<<el;
+            }
+            else
+            {
+                int ans=(cnt+2)/3;
+                cout<<ans<<el;
+            }
+        }
+    }
+}
+
+
+|1374C|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        string s;
+        cin>>n>>s;
+        int bal=0;
+        int ans=0;
+        for(int i=0;i<n;i++)
+        {
+            if(s[i]=='(')
+            {
+                bal++;
+            }
+            else
+            {
+                bal--;
+            }
+            if(bal<0)
+            {
+                ans++;
+                bal=0;
+            }
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|139A|
+inline void solve()
+{
+    int n;
+    cin>>n;
+    vi a(7);
+    for(int i=0;i<7;i++)
+    {
+        cin>>a[i];
+    }
+    int idx=0;
+    while(true)
+    {
+        n-=a[idx];
+        if(n<=0)
+        {
+            cout<<idx+1<<el;
+            return;
+        }
+        idx=(idx+1)%7;
+    }
+}
+
+
+|1418A|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll x,y,k;
+        cin>>x>>y>>k;
+        ll nd=k*(y+1)-1;
+        ll tr=(nd+x-2)/(x-1);
+        cout<<tr+k<<el;
+    }
+}
+
+
+|1472C|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        vl a(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+        vl dp(n);
+        ll ans=0;
+        for(int i=n-1;i>=0;i--)
+        {
+            dp[i]=a[i];
+            if(i+a[i]<n)
+            {
+                dp[i]+=dp[i+a[i]];
+            }
+            chmax(ans,dp[i]);
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1474B|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int d;
+        cin>>d;
+        int p=1+d;
+        while(true)
+        {
+            bool ok=true;
+            for(int i=2;i*i<=p;i++)
+            {
+                if(p%i==0)
+                {
+                    ok=false;
+                    break;
+                }
+            }
+            if(ok)
+            {
+                break;
+            }
+            p++;
+        }
+        int q=p+d;
+        while(true)
+        {
+            bool ok=true;
+            for(int i=2;i*i<=q;i++)
+            {
+                if(q%i==0)
+                {
+                    ok=false;
+                    break;
+                }
+            }
+            if(ok)
+            {
+                break;
+            }
+            q++;
+        }
+        ll ans=(ll)p*q;
+        cout<<ans<<el;
+    }
+}
+
+
+|1476A|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll n,k;
+        cin>>n>>k;
+        ll mul=(n+k-1)/k;
+        ll sum=mul*k;
+        ll ans=(sum+n-1)/n;
+        cout<<ans<<el;
+    }
+}
+
+
+|1485A|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int a,b;
+        cin>>a>>b;
+        int ans=1e9;
+        for(int add=0;add<=35;add++)
+        {
+            int cb=b+add;
+            if(cb<=1)
+            {
+                continue;
+            }
+            int ca=a;
+            int cur=add;
+            while(ca>0)
+            {
+                ca/=cb;
+                cur++;
+            }
+            chmin(ans,cur);
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1490C|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll x;
+        cin>>x;
+        bool ok=false;
+        for(ll a=1;a*a*a<x;a++)
+        {
+            ll rem=x-a*a*a;
+            ll b=round(cbrt(rem));
+            while(b*b*b<rem)
+            {
+                b++;
+            }
+            while(b*b*b>rem)
+            {
+                b--;
+            }
+            if(b>0 and b*b*b==rem)
+            {
+                ok=true;
+                break;
+            }
+        }
+        if(ok)
+        {
+            yes;
+        }
+        else
+        {
+            no;
+        }
+    }
+}
+
+
+|1506C|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        string a,b;
+        cin>>a>>b;
+        int mx=0;
+        for(int i=0;i<sz(a);i++)
+        {
+            for(int j=1;i+j<=sz(a);j++)
+            {
+                string sub=a.substr(i,j);
+                if(b.find(sub)!=string::npos)
+                {
+                    chmax(mx,j);
+                }
+            }
+        }
+        int ans=sz(a)+sz(b)-2*mx;
+        cout<<ans<<el;
+    }
+}
+
+
+|1521A|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll a,b;
+        cin>>a>>b;
+        if(b==1)
+        {
+            no;
+        }
+        else
+        {
+            yes;
+            ll x=a;
+            ll y=a*b;
+            ll z=a*(b+1);
+            cout<<x<<" "<<y<<" "<<z<<el;
+        }
+    }
+}
+
+
+|158B|
+inline void solve()
+{
+    int n;
+    cin>>n;
+    int c1=0,c2=0,c3=0,c4=0;
+    for(int i=0;i<n;i++)
+    {
+        int s;
+        cin>>s;
+        if(s==1)
+        {
+            c1++;
+        }
+        else if(s==2)
+        {
+            c2++;
+        }
+        else if(s==3)
+        {
+            c3++;
+        }
+        else
+        {
+            c4++;
+        }
+    }
+    int ans=c4+c3+c2/2;
+    c1-=c3;
+    if(c2%2==1)
+    {
+        ans++;
+        c1-=2;
+    }
+    if(c1>0)
+    {
+        ans+=(c1+3)/4;
+    }
+    cout<<ans<<el;
+}
+
+
+|1669F|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        vl a(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+        int l=0,r=n-1;
+        ll sl=a[0],sr=a[n-1];
+        int ans=0;
+        while(l<r)
+        {
+            if(sl==sr)
+            {
+                ans=l+1+n-r;
+                l++;
+                sl+=a[l];
+            }
+            else if(sl<sr)
+            {
+                l++;
+                sl+=a[l];
+            }
+            else
+            {
+                r--;
+                sr+=a[r];
+            }
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1690D|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,k;
+        string s;
+        cin>>n>>k>>s;
+        int cnt=0;
+        for(int i=0;i<k;i++)
+        {
+            if(s[i]=='W')
+            {
+                cnt++;
+            }
+        }
+        int ans=cnt;
+        for(int i=k;i<n;i++)
+        {
+            if(s[i]=='W')
+            {
+                cnt++;
+            }
+            if(s[i-k]=='W')
+            {
+                cnt--;
+            }
+            chmin(ans,cnt);
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1691B|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        vl a(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+        vi p(n);
+        bool ok=true;
+        int l=0;
+        while(l<n)
+        {
+            int r=l;
+            while(r<n and a[r]==a[l])
+            {
+                r++;
+            }
+            if(r-l==1)
+            {
+                ok=false;
+                break;
+            }
+            p[l]=r;
+            for(int i=l+1;i<r;i++)
+            {
+                p[i]=i;
+            }
+            l=r;
+        }
+        if(not ok)
+        {
+            cout<<-1<<el;
+        }
+        else
+        {
+            for(int i=0;i<n;i++)
+            {
+                cout<<p[i]<<(i==n-1?el:' ');
+            }
+        }
+    }
+}
+
+
+|1715B|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll n,k,b,s;
+        cin>>n>>k>>b>>s;
+        ll mn=k*b;
+        ll mx=k*b+n*(k-1);
+        if(s<mn or s>mx)
+        {
+            cout<<-1<<el;
+        }
+        else
+        {
+            vl a(n,0);
+            a[0]=mn;
+            s-=mn;
+            for(int i=0;i<n;i++)
+            {
+                ll add=min(k-1,s);
+                a[i]+=add;
+                s-=add;
+            }
+            for(int i=0;i<n;i++)
+            {
+                cout<<a[i]<<(i==n-1?el:' ');
+            }
+        }
+    }
+}
+
+
+|1742D|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        vi pos(1001,-1);
+        for(int i=0;i<n;i++)
+        {
+            int x;
+            cin>>x;
+            pos[x]=i+1;
+        }
+        int ans=-1;
+        for(int i=1;i<=1000;i++)
+        {
+            if(pos[i]==-1)
+            {
+                continue;
+            }
+            for(int j=i;j<=1000;j++)
+            {
+                if(pos[j]==-1)
+                {
+                    continue;
+                }
+                if(gcd(i,j)==1)
+                {
+                    chmax(ans,pos[i]+pos[j]);
+                }
+            }
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1744C|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        char c;
+        cin>>n>>c;
+        string s;
+        cin>>s;
+        if(c=='g')
+        {
+            cout<<0<<el;
+        }
+        else
+        {
+            s+=s;
+            int lst=-1;
+            int ans=0;
+            for(int i=2*n-1;i>=0;i--)
+            {
+                if(s[i]=='g')
+                {
+                    lst=i;
+                }
+                if(s[i]==c and lst!=-1 and i<n)
+                {
+                    chmax(ans,lst-i);
+                }
+            }
+            cout<<ans<<el;
+        }
+    }
+}
+
+
+|1765M|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        int p=1;
+        for(int i=2;i*i<=n;i++)
+        {
+            if(n%i==0)
+            {
+                p=n/i;
+                break;
+            }
+        }
+        cout<<p<<" "<<n-p<<el;
+    }
+}
+
+
+|1791D|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        string s;
+        cin>>n>>s;
+        vi pref(n),suff(n);
+        set<char> st1,st2;
+        for(int i=0;i<n;i++)
+        {
+            st1.insert(s[i]);
+            pref[i]=sz(st1);
+        }
+        for(int i=n-1;i>=0;i--)
+        {
+            st2.insert(s[i]);
+            suff[i]=sz(st2);
+        }
+        int ans=0;
+        for(int i=0;i<n-1;i++)
+        {
+            chmax(ans,pref[i]+suff[i+1]);
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1791E|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        ll sum=0;
+        int cnt=0;
+        int mn=2e9;
+        for(int i=0;i<n;i++)
+        {
+            int x;
+            cin>>x;
+            if(x<0)
+            {
+                cnt++;
+            }
+            sum+=abs(x);
+            chmin(mn,abs(x));
+        }
+        if(cnt%2==1)
+        {
+            sum-=2LL*mn;
+        }
+        cout<<sum<<el;
+    }
+}
+
+
+|1791G1|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        ll c;
+        cin>>n>>c;
+        vl cost(n);
+        for(int i=0;i<n;i++)
+        {
+            ll x;
+            cin>>x;
+            cost[i]=x+i+1;
+        }
+        sort(all(cost));
+        int ans=0;
+        for(int i=0;i<n;i++)
+        {
+            if(c>=cost[i])
+            {
+                c-=cost[i];
+                ans++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1831B|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        vi a(n),b(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+        for(int i=0;i<n;i++)
+        {
+            cin>>b[i];
+        }
+        vi ca(2*n+5,0),cb(2*n+5,0);
+        int l=0;
+        while(l<n)
+        {
+            int r=l;
+            while(r<n and a[r]==a[l])
+            {
+                r++;
+            }
+            chmax(ca[a[l]],r-l);
+            l=r;
+        }
+        l=0;
+        while(l<n)
+        {
+            int r=l;
+            while(r<n and b[r]==b[l])
+            {
+                r++;
+            }
+            chmax(cb[b[l]],r-l);
+            l=r;
+        }
+        int ans=0;
+        for(int i=1;i<=2*n;i++)
+        {
+            chmax(ans,ca[i]+cb[i]);
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1832B|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,k;
+        cin>>n>>k;
+        vl a(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+        sort(all(a));
+        vl pref(n+1,0);
+        for(int i=0;i<n;i++)
+        {
+            pref[i+1]=pref[i]+a[i];
+        }
+        ll ans=0;
+        for(int m=0;m<=k;m++)
+        {
+            int rem1=2*m;
+            int rem2=n-(k-m);
+            chmax(ans,pref[rem2]-pref[rem1]);
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1840C|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,k,q;
+        cin>>n>>k>>q;
+        vl a(n);
+        ll ans=0;
+        ll len=0;
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+            if(a[i]<=q)
+            {
+                len++;
+            }
+            else
+            {
+                if(len>=k)
+                {
+                    ans+=(len-k+1)*(len-k+2)/2;
+                }
+                len=0;
+            }
+        }
+        if(len>=k)
+        {
+            ans+=(len-k+1)*(len-k+2)/2;
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1849B|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,k;
+        cin>>n>>k;
+        vector<pii> v(n);
+        for(int i=0;i<n;i++)
+        {
+            int x;
+            cin>>x;
+            int rem=x%k;
+            if(rem==0)
+            {
+                rem=k;
+            }
+            v[i]={rem,-(i+1)};
+        }
+        sort(rall(v));
+        for(int i=0;i<n;i++)
+        {
+            cout<<-v[i].s<<(i==n-1?el:' ');
+        }
+    }
+}
+
+
+|1850E|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        ll c;
+        cin>>n>>c;
+        vl s(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>s[i];
+        }
+        ll low=1,high=1e9,ans=1;
+        while(low<=high)
+        {
+            ll mid=low+(high-low)/2;
+            i128 tot=0;
+            for(int i=0;i<n;i++)
+            {
+                tot+=(i128)(s[i]+2*mid)*(s[i]+2*mid);
+                if(tot>c)
+                {
+                    break;
+                }
+            }
+            if(tot==c)
+            {
+                ans=mid;
+                break;
+            }
+            if(tot<c)
+            {
+                low=mid+1;
+            }
+            else
+            {
+                high=mid-1;
+            }
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1859B|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        ll sum=0;
+        int mn1=2e9,mn2=2e9;
+        for(int i=0;i<n;i++)
+        {
+            int m;
+            cin>>m;
+            vi v(m);
+            for(int j=0;j<m;j++)
+            {
+                cin>>v[j];
+            }
+            sort(all(v));
+            chmin(mn1,v[0]);
+            sum+=v[1];
+            chmin(mn2,v[1]);
+        }
+        ll ans=(ll)mn1+sum-mn2;
+        cout<<ans<<el;
+    }
+}
+
+
+|1873E|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        ll x;
+        cin>>n>>x;
+        vl a(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+        ll low=1,high=2e9+7,ans=1;
+        while(low<=high)
+        {
+            ll mid=low+(high-low)/2;
+            ll need=0;
+            for(int i=0;i<n;i++)
+            {
+                if(a[i]<mid)
+                {
+                    need+=mid-a[i];
+                    if(need>x)
+                    {
+                        break;
+                    }
+                }
+            }
+            if(need<=x)
+            {
+                ans=mid;
+                low=mid+1;
+            }
+            else
+            {
+                high=mid-1;
+            }
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1876A|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        ll p;
+        cin>>n>>p;
+        vector<pll> v(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>v[i].s;
+        }
+        for(int i=0;i<n;i++)
+        {
+            cin>>v[i].f;
+        }
+        sort(all(v));
+        ll ans=p;
+        ll rem=n-1;
+        for(int i=0;i<n and rem>0;i++)
+        {
+            if(v[i].f<p)
+            {
+                ll take=min(rem,v[i].s);
+                ans+=take*v[i].f;
+                rem-=take;
+            }
+            else
+            {
+                break;
+            }
+        }
+        ans+=rem*p;
+        cout<<ans<<el;
+    }
+}
+
+
+|1883C|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,k;
+        cin>>n>>k;
+        vi a(n);
+        int ans=k;
+        int ev=0;
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+            if(a[i]%2==0)
+            {
+                ev++;
+            }
+            int rem=a[i]%k;
+            int cost=(k-rem)%k;
+            chmin(ans,cost);
+        }
+        if(k==4)
+        {
+            int cost2=max(0,2-ev);
+            chmin(ans,cost2);
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1899B|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        vl a(n);
+        vl pref(n+1,0);
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+            pref[i+1]=pref[i]+a[i];
+        }
+        ll ans=0;
+        for(int k=1;k<n;k++)
+        {
+            if(n%k==0)
+            {
+                ll mx=-1,mn=INF;
+                for(int i=0;i<n;i+=k)
+                {
+                    ll cur=pref[i+k]-pref[i];
+                    chmax(mx,cur);
+                    chmin(mn,cur);
+                }
+                chmax(ans,mx-mn);
+            }
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1899C|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        vl a(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+        ll cur=a[0],ans=a[0];
+        for(int i=1;i<n;i++)
+        {
+            if(abs(a[i])%2!=abs(a[i-1])%2)
+            {
+                cur=max(a[i],cur+a[i]);
+            }
+            else
+            {
+                cur=a[i];
+            }
+            chmax(ans,cur);
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1913B|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        string s;
+        cin>>s;
+        int c0=0,c1=0;
+        for(int i=0;i<sz(s);i++)
+        {
+            if(s[i]=='0')
+            {
+                c0++;
+            }
+            else
+            {
+                c1++;
+            }
+        }
+        int len=0;
+        for(int i=0;i<sz(s);i++)
+        {
+            if(s[i]=='0')
+            {
+                if(c1>0)
+                {
+                    c1--;
+                    len++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+            else
+            {
+                if(c0>0)
+                {
+                    c0--;
+                    len++;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        int ans=sz(s)-len;
+        cout<<ans<<el;
+    }
+}
+
+
+|1914C|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n,k;
+        cin>>n>>k;
+        vi a(n),b(n);
+        for(int i=0;i<n;i++)
+        {
+            cin>>a[i];
+        }
+        for(int i=0;i<n;i++)
+        {
+            cin>>b[i];
+        }
+        int sum=0,mx=0,ans=0;
+        int lim=min(n,k);
+        for(int i=0;i<lim;i++)
+        {
+            sum+=a[i];
+            chmax(mx,b[i]);
+            chmax(ans,sum+(k-1-i)*mx);
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1917B|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        string s;
+        cin>>n>>s;
+        set<char> st;
+        ll ans=0;
+        for(int i=0;i<n;i++)
+        {
+            st.insert(s[i]);
+            ans+=sz(st);
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1985C|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int n;
+        cin>>n;
+        ll sum=0,mx=0;
+        int ans=0;
+        for(int i=0;i<n;i++)
+        {
+            ll x;
+            cin>>x;
+            sum+=x;
+            chmax(mx,x);
+            if(sum==2LL*mx)
+            {
+                ans++;
+            }
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|1999B|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int a1,a2,b1,b2;
+        cin>>a1>>a2>>b1>>b2;
+        int ans=0;
+        int p1[4]={a1,a1,a2,a2};
+        int p2[4]={a2,a2,a1,a1};
+        int q1[4]={b1,b2,b1,b2};
+        int q2[4]={b2,b1,b2,b1};
+        for(int i=0;i<4;i++)
+        {
+            int w1=0,w2=0;
+            if(p1[i]>q1[i])
+            {
+                w1++;
+            }
+            else if(p1[i]<q1[i])
+            {
+                w2++;
+            }
+            if(p2[i]>q2[i])
+            {
+                w1++;
+            }
+            else if(p2[i]<q2[i])
+            {
+                w2++;
+            }
+            if(w1>w2)
+            {
+                ans++;
+            }
+        }
+        cout<<ans<<el;
+    }
+}
+
+
+|230A|
+inline void solve()
+{
+    int s,n;
+    cin>>s>>n;
+    vector<pii> v(n);
+    for(int i=0;i<n;i++)
+    {
+        cin>>v[i].f>>v[i].s;
+    }
+    sort(all(v));
+    bool ok=true;
+    for(int i=0;i<n;i++)
+    {
+        if(s>v[i].f)
+        {
+            s+=v[i].s;
+        }
+        else
+        {
+            ok=false;
+            break;
+        }
+    }
+    if(ok)
+    {
+        yes;
+    }
+    else
+    {
+        no;
+    }
+}
+
+
+|268B|
+inline void solve()
+{
+    ll n;
+    cin>>n;
+    ll ans=n;
+    for(ll i=1;i<n;i++)
+    {
+        ans+=(n-i)*i;
+    }
+    cout<<ans<<el;
+}
+
+
+|270A|
+inline void solve()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int a;
+        cin>>a;
+        if(360%(180-a)==0)
+        {
+            yes;
+        }
+        else
+        {
+            no;
+        }
+    }
+}
+
+
+|313B|
+inline void solve()
+{
+    string s;
+    cin>>s;
+    int n=sz(s);
+    vi pref(n,0);
+    for(int i=1;i<n;i++)
+    {
+        pref[i]=pref[i-1]+(s[i]==s[i-1]?1:0);
+    }
+    int m;
+    cin>>m;
+    while(m--)
+    {
+        int l,r;
+        cin>>l>>r;
+        int ans=pref[r-1]-pref[l-1];
+        cout<<ans<<el;
+    }
+}
+
+
+|339B|
+inline void solve()
+{
+    ll n,m;
+    cin>>n>>m;
+    ll cur=1,ans=0;
+    for(int i=0;i<m;i++)
+    {
+        ll x;
+        cin>>x;
+        if(x>=cur)
+        {
+            ans+=x-cur;
+        }
+        else
+        {
+            ans+=n-cur+x;
+        }
+        cur=x;
+    }
+    cout<<ans<<el;
+}
+
+
+|363B|
+inline void solve()
+{
+    int n,k;
+    cin>>n>>k;
+    vi h(n);
+    for(int i=0;i<n;i++)
+    {
+        cin>>h[i];
+    }
+    int sum=0;
+    for(int i=0;i<k;i++)
+    {
+        sum+=h[i];
+    }
+    int mn=sum,ans=1;
+    for(int i=k;i<n;i++)
+    {
+        sum+=h[i]-h[i-k];
+        if(sum<mn)
+        {
+            mn=sum;
+            ans=i-k+2;
+        }
+    }
+    cout<<ans<<el;
+}
+
+
+|368B|
+inline void solve()
+{
+    int n,m;
+    cin>>n>>m;
+    vi a(n);
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    vi ans(n);
+    set<int> st;
+    for(int i=n-1;i>=0;i--)
+    {
+        st.insert(a[i]);
+        ans[i]=sz(st);
+    }
+    while(m--)
+    {
+        int l;
+        cin>>l;
+        cout<<ans[l-1]<<el;
+    }
+}
+
+
+|379A|
+inline void solve()
+{
+    int a,b;
+    cin>>a>>b;
+    int ans=a,burn=a;
+    while(burn>=b)
+    {
+        int nw=burn/b;
+        ans+=nw;
+        burn=burn%b+nw;
+    }
+    cout<<ans<<el;
+}
+
+
+|43A|
+inline void solve()
+{
+    int n;
+    cin>>n;
+    string t1="",t2="";
+    int c1=0,c2=0;
+    for(int i=0;i<n;i++)
+    {
+        string s;
+        cin>>s;
+        if(t1=="")
+        {
+            t1=s;
+            c1++;
+        }
+        else if(s==t1)
+        {
+            c1++;
+        }
+        else
+        {
+            t2=s;
+            c2++;
+        }
+    }
+    if(c1>c2)
+    {
+        cout<<t1<<el;
+    }
+    else
+    {
+        cout<<t2<<el;
+    }
+}
+
+
+|450A|
+inline void solve()
+{
+    int n,m;
+    cin>>n>>m;
+    int mx=0,ans=1;
+    for(int i=1;i<=n;i++)
+    {
+        int a;
+        cin>>a;
+        int req=(a+m-1)/m;
+        if(req>=mx)
+        {
+            mx=req;
+            ans=i;
+        }
+    }
+    cout<<ans<<el;
+}
+
+
+|456A|
+inline void solve()
+{
+    int n;
+    cin>>n;
+    vector<pii> v(n);
+    for(int i=0;i<n;i++)
+    {
+        cin>>v[i].f>>v[i].s;
+    }
+    sort(all(v));
+    bool ok=false;
+    for(int i=0;i<n-1;i++)
+    {
+        if(v[i].s>v[i+1].s)
+        {
+            ok=true;
+            break;
+        }
+    }
+    if(ok)
+    {
+        cout<<"Happy Alex"<<el;
+    }
+    else
+    {
+        cout<<"Poor Alex"<<el;
+    }
+}
+
+
+|467B|
+inline void solve()
+{
+    int n,m,k;
+    cin>>n>>m>>k;
+    vi x(m+1);
+    for(int i=0;i<=m;i++)
+    {
+        cin>>x[i];
+    }
+    int ans=0;
+    for(int i=0;i<m;i++)
+    {
+        if(popcnt(x[i]^x[m])<=k)
+        {
+            ans++;
+        }
+    }
+    cout<<ans<<el;
+}
+
+
+|476A|
+inline void solve()
+{
+    int n,m;
+    cin>>n>>m;
+    int low=(n+1)/2;
+    int ans=((low+m-1)/m)*m;
+    if(ans>n)
+    {
+        cout<<-1<<el;
+    }
+    else
+    {
+        cout<<ans<<el;
+    }
+}
+
+
+|479A|
+inline void solve()
+{
+    int a,b,c;
+    cin>>a>>b>>c;
+    int ans=a+b+c;
+    chmax(ans,a*b*c);
+    chmax(ans,(a+b)*c);
+    chmax(ans,a*(b+c));
+    chmax(ans,a+b*c);
+    chmax(ans,a*b+c);
+    cout<<ans<<el;
+}
+
+
+|499B|
+inline void solve()
+{
+    int n,m;
+    cin>>n>>m;
+    map<string,string> mp;
+    for(int i=0;i<m;i++)
+    {
+        string s1,s2;
+        cin>>s1>>s2;
+        if(sz(s2)<sz(s1))
+        {
+            mp[s1]=s2;
+        }
+        else
+        {
+            mp[s1]=s1;
+        }
+    }
+    for(int i=0;i<n;i++)
+    {
+        string w;
+        cin>>w;
+        cout<<mp[w]<<(i==n-1?el:' ');
+    }
+}
+
+
+|500A|
+inline void solve()
+{
+    int n,t;
+    cin>>n>>t;
+    vi a(n);
+    for(int i=1;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    int cur=1;
+    while(cur<t)
+    {
+        cur+=a[cur];
+    }
+    if(cur==t)
+    {
+        yes;
+    }
+    else
+    {
+        no;
+    }
+}
+
+
+|519B|
+inline void solve()
+{
+    int n;
+    cin>>n;
+    ll s1=0,s2=0,s3=0;
+    for(int i=0;i<n;i++)
+    {
+        ll x;
+        cin>>x;
+        s1+=x;
+    }
+    for(int i=0;i<n-1;i++)
+    {
+        ll x;
+        cin>>x;
+        s2+=x;
+    }
+    for(int i=0;i<n-2;i++)
+    {
+        ll x;
+        cin>>x;
+        s3+=x;
+    }
+    cout<<s1-s2<<el<<s2-s3<<el;
+}
+
+
+|577A|
+inline void solve()
+{
+    ll n,x;
+    cin>>n>>x;
+    int ans=0;
+    for(ll i=1;i<=n;i++)
+    {
+        if(x%i==0 and x/i<=n)
+        {
+            ans++;
+        }
+    }
+    cout<<ans<<el;
+}
+
+
+|579A|
+inline void solve()
+{
+    ll x;
+    cin>>x;
+    cout<<popcnt(x)<<el;
+}
+
+
+|584A|
+inline void solve()
+{
+    int n,t;
+    cin>>n>>t;
+    if(t==10)
+    {
+        if(n==1)
+        {
+            cout<<-1<<el;
+        }
+        else
+        {
+            cout<<1;
+            for(int i=0;i<n-1;i++)
+            {
+                cout<<0;
+            }
+            cout<<el;
+        }
+    }
+    else
+    {
+        for(int i=0;i<n;i++)
+        {
+            cout<<t;
+        }
+        cout<<el;
+    }
+}
+
+
+|58A|
+inline void solve()
+{
+    string s;
+    cin>>s;
+    string tar="hello";
+    int p=0;
+    for(int i=0;i<sz(s);i++)
+    {
+        if(p<sz(tar) and s[i]==tar[p])
+        {
+            p++;
+        }
+    }
+    if(p==sz(tar))
+    {
+        yes;
+    }
+    else
+    {
+        no;
+    }
+}
+
+
+|688B|
+inline void solve()
+{
+    string s;
+    cin>>s;
+    cout<<s;
+    reverse(all(s));
+    cout<<s<<el;
+}
+
+
+|706B|
+inline void solve()
+{
+    int n;
+    cin>>n;
+    vi x(n);
+    for(int i=0;i<n;i++)
+    {
+        cin>>x[i];
+    }
+    sort(all(x));
+    int q;
+    cin>>q;
+    while(q--)
+    {
+        int m;
+        cin>>m;
+        int ans=upper_bound(all(x),m)-x.begin();
+        cout<<ans<<el;
+    }
+}
+
+
+|742A|
+inline void solve()
+{
+    ll n;
+    cin>>n;
+    if(n==0)
+    {
+        cout<<1<<el;
+    }
+    else
+    {
+        int r=n%4;
+        if(r==1)
+        {
+            cout<<8<<el;
+        }
+        else if(r==2)
+        {
+            cout<<4<<el;
+        }
+        else if(r==3)
+        {
+            cout<<2<<el;
+        }
+        else
+        {
+            cout<<6<<el;
+        }
+    }
+}
+
+
+|766B|
+inline void solve()
+{
+    int n;
+    cin>>n;
+    vi a(n);
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+    }
+    sort(all(a));
+    bool ok=false;
+    for(int i=0;i<n-2;i++)
+    {
+        if(a[i]+a[i+1]>a[i+2])
+        {
+            ok=true;
+            break;
+        }
+    }
+    if(ok)
+    {
+        yes;
+    }
+    else
+    {
+        no;
+    }
+}
